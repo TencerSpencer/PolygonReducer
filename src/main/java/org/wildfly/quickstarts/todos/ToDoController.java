@@ -24,6 +24,7 @@ package org.wildfly.quickstarts.todos;
 import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 
 import java.net.MalformedURLException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,58 +48,12 @@ import jakarta.ws.rs.core.UriInfo;
 @RequestScoped
 public class ToDoController {
 
-    @Inject
-    private ToDoDAO todoDAO;
-
     @Context
     private UriInfo uriInfo;
 
     @GET
     @Produces(APPLICATION_JSON)
-    public List<ToDo> getAllTodos(){
-        return todoDAO.findAll();
-    }
-
-    @GET
-    @Path("{id}")
-    @Produces(APPLICATION_JSON)
-    public ToDo getTodoFrom(@PathParam("id") long id) {
-        Optional<ToDo> todo = todoDAO.findById(id);
-        return todo.orElseThrow(() -> new NotFoundException("ToDo does not exist!"));
-    }
-
-    @DELETE
-    @Transactional
-    public void deleteAllTodos(){
-        todoDAO.findAll().forEach(todo -> todoDAO.remove(todo));
-    }
-
-    @DELETE
-    @Path("{id}")
-    @Transactional
-    public Response deleteTodoFrom(@PathParam("id") long id) {
-        Optional<ToDo> optional = todoDAO.findById(id);
-        ToDo todo = optional.orElseThrow(() -> new NotFoundException("ToDo does not exist!"));
-        todoDAO.remove(todo);
-        return Response.ok().build();
-    }
-
-    @POST
-    @Consumes(APPLICATION_JSON)
-    @Produces(APPLICATION_JSON)
-    @Transactional
-    public ToDo addTodo(ToDo todo) throws MalformedURLException {
-        todo.setUrl(uriInfo.getAbsolutePathBuilder().scheme("https").build().toURL());
-        todoDAO.insert(todo);
-        return todo;
-    }
-
-    @PATCH
-    @Path("{id}")
-    @Produces(APPLICATION_JSON)
-    @Consumes(APPLICATION_JSON)
-    @Transactional
-    public ToDo updateTodo(@PathParam("id") long id, ToDo update) {
-        return todoDAO.update(id, update).orElseThrow(() -> new NotFoundException("ToDo does not exist!"));
-    }
+    public List<String> getAllTodos(){
+        return Arrays.asList("test");
+    }    
 }

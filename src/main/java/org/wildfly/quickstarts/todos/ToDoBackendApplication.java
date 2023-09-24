@@ -25,5 +25,5 @@ import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
 
 @ApplicationPath("")
-public class ToDoBackendApplication extends Application{
+public class ToDoBackendApplication extends Application {
 }
