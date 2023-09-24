@@ -19,11 +19,41 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.wildfly.quickstarts.todos;
+package com.tencerspencer.app;
 
-import jakarta.ws.rs.ApplicationPath;
-import jakarta.ws.rs.core.Application;
+import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 
-@ApplicationPath("")
-public class ToDoBackendApplication extends Application {
+import java.net.MalformedURLException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.NotFoundException;
+import jakarta.ws.rs.PATCH;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.UriInfo;
+
+@Path("")
+@RequestScoped
+public class ToDoController {
+
+    @Context
+    private UriInfo uriInfo;
+
+    @GET
+    @Produces(APPLICATION_JSON)
+    public List<String> getAllTodos(){
+        return Arrays.asList("test");
+    }    
 }
