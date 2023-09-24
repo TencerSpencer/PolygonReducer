@@ -136,6 +136,18 @@
             <artifactId>resteasy-jackson2-provider</artifactId>
             <scope>provided</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.20.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.geometry/s2-geometry -->
+        <dependency>
+            <groupId>com.google.geometry</groupId>
+            <artifactId>s2-geometry</artifactId>
+            <version>2.0.0</version>
+        </dependency>
     </dependencies>
 
 
@@ -191,7 +203,7 @@
                 <plugin>
                     <artifactId>maven-war-plugin</artifactId>
                     <version>3.0.0</version>
-                </plugin>                  
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>

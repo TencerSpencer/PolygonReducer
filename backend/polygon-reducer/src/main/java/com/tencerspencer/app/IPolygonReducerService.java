@@ -1,9 +1,8 @@
 package com.tencerspencer.app;
 
-import java.io.Serializable;
 import java.util.Set;
 
-public interface IPolygonReducerService extends Serializable {
+public interface IPolygonReducerService {
 
     public void addShape(Set<Point> points);
 
