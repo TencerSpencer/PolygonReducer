@@ -140,6 +140,7 @@
 
 
     <build>
+        <!-- determines the name of the war -->
         <finalName>${project.artifactId}</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be
             moved to
