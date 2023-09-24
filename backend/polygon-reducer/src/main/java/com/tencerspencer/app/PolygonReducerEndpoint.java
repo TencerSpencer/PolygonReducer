@@ -3,6 +3,7 @@ package com.tencerspencer.app;
 import java.util.Set;
 
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -17,8 +18,11 @@ public class PolygonReducerEndpoint {
     @Context
     private UriInfo uriInfo;
 
+    @Inject
+    private IPolygonReducerService polygonReducerService;
+
     @POST
     public void addShape(Set<Point> points) {
-
+        polygonReducerService.addShape(points);
     }
 }
